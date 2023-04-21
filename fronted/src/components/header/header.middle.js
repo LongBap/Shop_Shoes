@@ -5,24 +5,24 @@ class HeaderMiddle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "Account"
+      email: "Account",
     };
   }
   componentWillMount() {
     if (storeConfig.getUser() !== null) {
       this.setState({
-        email: storeConfig.getUser().email
+        email: storeConfig.getUser().email,
       });
     }
   }
   componentWillReceiveProps(nextProps) {
     if (!nextProps.islogin) {
       this.setState({
-        email: "Account"
+        email: "Account",
       });
     } else {
       this.setState({
-        email: storeConfig.getUser().email
+        email: storeConfig.getUser().email,
       });
     }
   }
@@ -38,7 +38,8 @@ class HeaderMiddle extends Component {
           }}
         >
           <a>
-            <i className="fa fa-lock" />Logout
+            <i className="fa fa-lock" />
+            Logout
           </a>
         </li>
       );
@@ -46,7 +47,8 @@ class HeaderMiddle extends Component {
       return (
         <li>
           <Link to="/login_register">
-            <i className="fa fa-lock" />Login
+            <i className="fa fa-lock" />
+            Login
           </Link>
         </li>
       );
@@ -56,25 +58,24 @@ class HeaderMiddle extends Component {
     if (this.state.email === "Account") {
       return;
     } else {
-        
       this.props.history.push("/profile/" + this.state.email);
     }
   };
-  hoverlogin = () =>{
-    if(this.props.islogin){
+  hoverlogin = () => {
+    if (this.props.islogin) {
       return (
-        <ul className='sub-menu'>
+        <ul className="sub-menu">
+          <li onClick={() => this.handleProfile()}>
+            <Link to={"/"}>Hồ Sơ </Link>
+          </li>
 
-<li   onClick={() => this.handleProfile()}>
-                <Link to={"/"}  >Hồ Sơ </Link>
-              </li>
-
-              <li><Link to='/purchase_history' >Đơn Hàng </Link></li>
-          
-          </ul>
+          <li>
+            <Link to="/purchase_history">Đơn Hàng </Link>
+          </li>
+        </ul>
       );
     }
-  }
+  };
   render() {
     return (
       <div className="header-middle">
@@ -86,19 +87,17 @@ class HeaderMiddle extends Component {
                   <img src="/assets/images/home/logo1.gif" alt="" />
                 </a>
               </div>
-             
             </div>
             <div className="col-sm-8">
               <div className="shop-menu pull-right">
                 <ul className="nav navbar-nav collapse navbar-collapse">
-                <li className='dropdown'>
-                    <a className='Setting-item'>
+                  <li className="dropdown">
+                    <a className="Setting-item">
                       <i className="fa fa-user dropbtn"></i>
                     </a>
-                      {this.hoverlogin()}
-                </li>
-                 
-                 
+                    {this.hoverlogin()}
+                  </li>
+
                   <li>
                     <Link to={"/cart"}>
                       <i className="fa fa-shopping-cart" />
