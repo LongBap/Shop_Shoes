@@ -149,9 +149,10 @@ class ContentProductDetail extends Component {
     }
     return (
       <section>
-        <div className="container-detail">
+        <div className="container">
           <div className="row">
-            <div className="col-sm-3">
+            {/* Phân loại */}
+            {/* <div className="col-sm-3">
               <div className="left-sidebar">
                 <h2>Category</h2>
                 <div className="panel-group category-products" id="accordian">
@@ -168,15 +169,15 @@ class ContentProductDetail extends Component {
                   })}
                 </div>
               </div>
-            </div>
-            <div className="col-sm-9 padding-right">
+            </div> */}
+            <div className="col-sm-12 padding-right">
               <div className="product-details">
-                <div className="col-sm-5">
+                <div className="col-sm-6">
                   <div className="view-product">
                     <img src={this.props.mproductDetail.img} alt="" />
                   </div>
                 </div>
-                <div className="col-sm-7">
+                <div className="col-sm-6">
                   <div className="product-information">
                     <img
                       src="/assets/images/product-details/new.jpg"
@@ -190,7 +191,12 @@ class ContentProductDetail extends Component {
                     <span>
                       <div>
                         <span>Giá:</span>
-                        <span>{this.props.mproductDetail.price}</span>
+                        <span>
+                          {new Intl.NumberFormat("de-DE", {
+                            currency: "EUR",
+                          }).format(this.props.mproductDetail.price)}
+                          <sup>đ</sup>
+                        </span>
                       </div>
                       <div className="count-product">
                         <p className="count">Số Lượng:</p>
@@ -252,7 +258,7 @@ class ContentProductDetail extends Component {
 
                 <div className="col-sm-12 review-product">
                   <div>
-                    <h3>Review Sách</h3>
+                    <h2>Mô Tả</h2>
                   </div>
                 </div>
                 <div className="tab-content">

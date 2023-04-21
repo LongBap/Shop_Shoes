@@ -76,6 +76,12 @@ class HeaderMiddle extends Component {
       );
     }
   };
+  handeSearch = (e) => {
+    console.log("click", e);
+    if (e === 13 || e.bubbles) {
+      this.props.searchTextSubmit();
+    }
+  };
   render() {
     return (
       <div className="header-middle">
@@ -88,7 +94,23 @@ class HeaderMiddle extends Component {
                 </a>
               </div>
             </div>
-            <div className="col-sm-8">
+            <div className="col-sm-4">
+              <div
+                className="search_box pull-right "
+                style={{ display: "flex" }}
+              >
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => this.props.setSearchText(e.target.value)}
+                  onKeyUp={(e) => this.handeSearch(e.keyCode)}
+                />
+                <button type="submit" onClick={(e) => this.handeSearch(e)}>
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <div className="col-sm-4">
               <div className="shop-menu pull-right">
                 <ul className="nav navbar-nav collapse navbar-collapse">
                   <li className="dropdown">
