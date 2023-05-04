@@ -1355,8 +1355,8 @@ h2.title {
   border: 1px solid #f15129;
   overflow: hidden;
   border-radius: 15px;
-  padding-left: 50px;
-  padding-top: 50px;
+  padding-left: 35px;
+  padding-top: 35px;
   position: relative;
   height: 430px;
 }
@@ -1375,13 +1375,13 @@ h2.title {
 }
 
 .product-information p {
-  color: #696763;
+  /* color: #696763; */
   font-family: "Roboto", sans-serif;
   margin-bottom: 5px;
 }
 
 .product-information span {
-  display: inline-block;
+  /* display: inline-block; */
   margin-bottom: 8px;
   margin-top: 18px;
 }
@@ -1412,7 +1412,12 @@ h2.title {
   font-weight: 700;
   margin-right: 5px;
 }
-
+.product-information .size-product {
+  margin: 20px 0px;
+}
+.product-information b {
+  margin-right: 10px;
+}
 .share {
   margin-top: 15px;
 }
@@ -1428,9 +1433,13 @@ h2.title {
   margin: 1rem 0;
 }
 .count-product {
+  margin-top: 20px;
   display: flex;
 }
-
+.count-product .count {
+  margin-right: 10px;
+  margin-top: 6px;
+}
 .shop-details-tab {
   border: 1px solid #f7f7f0;
   margin-bottom: 75px;

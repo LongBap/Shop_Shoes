@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import storeConfig from "../../config/storage.config";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Radio } from "antd";
 class ContentProductDetail extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +15,29 @@ class ContentProductDetail extends Component {
       noti: false,
       show: false,
       pagination: [],
+      value4: "40",
+      optionsWithDisabled: [
+        {
+          label: "39",
+          value: "39",
+        },
+        {
+          label: "40",
+          value: "40",
+        },
+        {
+          label: "41",
+          value: "41",
+        },
+        {
+          label: "42",
+          value: "42",
+        },
+        {
+          label: "43",
+          value: "43",
+        },
+      ],
     };
   }
   componentWillMount() {
@@ -49,6 +73,7 @@ class ContentProductDetail extends Component {
       });
     }
   }
+
   renderPagination() {
     if (this.state.pagination.length === 0) {
       return null;
@@ -109,6 +134,7 @@ class ContentProductDetail extends Component {
     );
     this.setState({ comment: "" });
   };
+
   submitOrder = () => {
     if (this.state.quantity < 0) {
       this.setState({ noti: false });
@@ -199,41 +225,56 @@ class ContentProductDetail extends Component {
                         </span>
                       </div>
                       <div className="count-product">
-                        <p className="count">Số Lượng:</p>
+                        <b className="count">Số Lượng: </b>
                         <input
                           type="number"
-                          min="0"
+                          min="1"
                           onChange={(e) =>
                             this.setState({ quantity: e.target.value })
                           }
                           value={this.state.quantity}
                         />
                       </div>
-                      <button
-                        onClick={() => this.submitOrder()}
-                        type="button"
-                        className="btn btn-default cart"
-                      >
-                        <i className="fa fa-shopping-cart" />
-                        Add to cart
-                      </button>
                     </span>
+                    <div className="size-product">
+                      <b>Size: </b>
+                      <Radio.Group
+                        options={this.state.optionsWithDisabled}
+                        onChange={(e) =>
+                          this.setState({ value4: e.target.value })
+                        }
+                        value={this.state.value4}
+                        optionType="button"
+                        buttonStyle="solid"
+                      />
+                    </div>
                     <p>{this.state.noti}</p>
                     <p>
-                      <b>Category:</b> {this.props.nameCategory}
+                      <b>Loại giày:</b> {this.props.nameCategory}
                     </p>
                     <p>
-                      <b>Release date </b>{" "}
+                      <b>Ngày sản xuất: </b>{" "}
                       {new Date(
                         this.props.mproductDetail.release_date
                       ).toDateString("yyyy-MM-dd")}
                     </p>
                     <p>
-                      <b>Publisher:</b> {this.props.namePublicsher}
+                      <b>Xuất xứ:</b> {this.props.namePublicsher}
                     </p>
-                    <p>
+                    {/* <p>
                       <b>Author:</b> {this.props.nameAuthor}
-                    </p>
+                    </p> */}
+                    <button
+                      onClick={() => this.submitOrder()}
+                      type="button"
+                      className="btn btn-default cart"
+                    >
+                      <i
+                        className="fa fa-shopping-cart"
+                        style={{ marginRight: 15 }}
+                      />
+                      Add to cart
+                    </button>
                   </div>
                   <Modal
                     show={this.state.show}
