@@ -7,7 +7,7 @@ cloudinary.config({
   api_secret: "A4E8SoZyR38f5OEWcYdfK0iVUAo",
 });
 
-const book = require("../models/book.model");
+const shoes = require("../models/shoes.model");
 const user = require("../models/user.model");
 const category = require("../models/category.model");
 const author = require("../models/author.model");
@@ -54,7 +54,7 @@ exports.addBook = async (req, res) => {
     res.status(500).json({ msg: "server error" });
     return;
   }
-  const newBook = new book({
+  const newBook = new shoes({
     id_category: id_category,
     name: name,
     price: price,
@@ -91,7 +91,7 @@ exports.updateBook = async (req, res) => {
     req.body;
   let bookFind;
   try {
-    bookFind = await book.findById(id);
+    bookFind = await shoes.findById(id);
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg: err });
@@ -136,7 +136,7 @@ exports.deletebook = async (req, res) => {
   }
   let bookFind;
   try {
-    bookFind = await book.findById(req.params.id);
+    bookFind = await shoes.findById(req.params.id);
   } catch (err) {
     console.log(err);
     res.status(500).json({ msg: err });

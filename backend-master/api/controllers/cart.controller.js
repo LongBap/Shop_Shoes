@@ -15,7 +15,7 @@ exports.addToCart = async (req, res) => {
   } catch (err) {
     const cart_new = new cart({
       id_user: id_user,
-      products: products
+      products: products,
     });
     let cartsave;
     try {
@@ -29,7 +29,7 @@ exports.addToCart = async (req, res) => {
   if (cartFind === null) {
     const cart_new = new cart({
       id_user: id_user,
-      products: products
+      products: products,
     });
     let cartsave;
     try {
@@ -42,7 +42,7 @@ exports.addToCart = async (req, res) => {
   }
   for (let i = 0; i < products.length; i++) {
     let index = cartFind.products.findIndex(
-      element => products[i]._id === element._id
+      (element) => products[i]._id === element._id
     );
     if (index === -1) {
       cartFind.products.push(products[i]);
@@ -53,7 +53,7 @@ exports.addToCart = async (req, res) => {
 
   try {
     await cart.findByIdAndUpdate(cartFind._id, {
-      $set: { products: cartFind.products }
+      $set: { products: cartFind.products },
     });
   } catch (err) {
     res.status(500).json({ msg: err });
@@ -95,7 +95,7 @@ exports.update = async (req, res) => {
     return;
   }
   let index = cartFind.products.findIndex(
-    element => element._id === product._id
+    (element) => element._id === product._id
   );
   if (index === -1) {
     res.status(404).json({ msg: "product not found in list" });
@@ -104,7 +104,7 @@ exports.update = async (req, res) => {
   cartFind.products[index].count = Number(product.count);
   try {
     await cart.findByIdAndUpdate(cartFind._id, {
-      $set: { products: cartFind.products }
+      $set: { products: cartFind.products },
     });
   } catch (err) {
     res.status(500).json({ msg: err });
@@ -133,7 +133,7 @@ exports.delete = async (req, res) => {
     return;
   }
   let index = cartFind.products.findIndex(
-    element => element._id === id_product
+    (element) => element._id === id_product
   );
   if (index === -1) {
     res.status(404).json({ msg: "product not found in list" });
@@ -142,7 +142,7 @@ exports.delete = async (req, res) => {
   cartFind.products.splice(index, 1);
   try {
     await cart.findByIdAndUpdate(cartFind._id, {
-      $set: { products: cartFind.products }
+      $set: { products: cartFind.products },
     });
   } catch (err) {
     res.status(500).json({ msg: err });
@@ -154,15 +154,14 @@ exports.removeCartByIDUser = async (id_user) => {
   try {
     cartFind = await cart.findOne({ id_user: id_user });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return false;
   }
   try {
     await cartFind.remove();
-  }
-  catch(err) {
+  } catch (err) {
     console.log(err);
     return false;
   }
   return true;
-}
+};

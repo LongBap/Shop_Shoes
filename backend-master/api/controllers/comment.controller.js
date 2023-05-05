@@ -1,6 +1,6 @@
 "use strict";
 const _comment = require("../models/comment.model");
-const book = require("../models/book.model");
+const shoes = require("../models/shoes.model");
 
 exports.mycomment = async (req, res) => {
   if (
@@ -16,7 +16,7 @@ exports.mycomment = async (req, res) => {
   let { id_user, id_book, name, comment } = req.body;
   let bookFind;
   try {
-    bookFind = await book.findById(id_book);
+    bookFind = await shoes.findById(id_book);
   } catch (err) {
     res.status(422).json({ msg: " ID book Invalid data" });
     return;
@@ -25,7 +25,7 @@ exports.mycomment = async (req, res) => {
     id_user: id_user,
     id_book: id_book,
     name: name,
-    comment: comment
+    comment: comment,
   });
   try {
     new_comment.save();
