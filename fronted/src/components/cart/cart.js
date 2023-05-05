@@ -14,7 +14,6 @@ class Cart extends Component {
     return (
       <div>
         <header id="header">
-        
           <HeaderMiddle
             islogin={this.props.islogin}
             logout={() => this.props.logout()}
@@ -24,19 +23,20 @@ class Cart extends Component {
         <ContentCart
           islogin={this.props.islogin}
           cart={this.props.cart}
-          updateProductInCart={product =>
+          updateProductInCart={(product) =>
             this.props.updateProductInCart(product)
           }
-          deteleProductInCart={(id_product) => this.props.deteleProductInCart(id_product)}
-    
-       
-          payment={( address, phone, name,total) => 
-            this.props.payment( address, phone, name,total)}
+          deteleProductInCart={(id_product) =>
+            this.props.deteleProductInCart(id_product)
+          }
+          payment={(address, phone, name, total) =>
+            this.props.payment(address, phone, name, total)
+          }
           ispay={this.props.ispay}
         />
         <footer id="footer">
           <FooterTop />
-          <FooterMiddle />
+          {/* <FooterMiddle /> */}
           <FooterBottom />
         </footer>
       </div>

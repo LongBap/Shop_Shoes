@@ -70,7 +70,7 @@ const Home = ({
     />
     <footer id="footer">
       <FooterTop />
-      <FooterMiddle />
+      {/* <FooterMiddle /> */}
       <FooterBottom />
     </footer>
   </div>

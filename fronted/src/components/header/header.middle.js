@@ -90,7 +90,7 @@ class HeaderMiddle extends Component {
             <div className="col-sm-4">
               <div className="logo pull-left">
                 <a href="/">
-                  <img src="/assets/images/home/logo1.gif" alt="" />
+                  <img src="/assets/images/home/logo3.png" alt="" />
                 </a>
               </div>
             </div>

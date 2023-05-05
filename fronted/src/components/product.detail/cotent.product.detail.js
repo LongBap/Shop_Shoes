@@ -15,27 +15,27 @@ class ContentProductDetail extends Component {
       noti: false,
       show: false,
       pagination: [],
-      value4: "40",
+      size: 40,
       optionsWithDisabled: [
         {
           label: "39",
-          value: "39",
+          value: 39,
         },
         {
           label: "40",
-          value: "40",
+          value: 40,
         },
         {
           label: "41",
-          value: "41",
+          value: 41,
         },
         {
           label: "42",
-          value: "42",
+          value: 42,
         },
         {
           label: "43",
-          value: "43",
+          value: 43,
         },
       ],
     };
@@ -144,6 +144,7 @@ class ContentProductDetail extends Component {
     }
     let product = this.props.mproductDetail;
     product.count = this.state.quantity;
+    product.size = this.state.size;
     this.props.addToCart(product);
   };
   render() {
@@ -241,9 +242,9 @@ class ContentProductDetail extends Component {
                       <Radio.Group
                         options={this.state.optionsWithDisabled}
                         onChange={(e) =>
-                          this.setState({ value4: e.target.value })
+                          this.setState({ size: e.target.value })
                         }
-                        value={this.state.value4}
+                        value={this.state.size}
                         optionType="button"
                         buttonStyle="solid"
                       />
@@ -273,7 +274,7 @@ class ContentProductDetail extends Component {
                         className="fa fa-shopping-cart"
                         style={{ marginRight: 15 }}
                       />
-                      Add to cart
+                      Thêm vào giỏ hàng
                     </button>
                   </div>
                   <Modal
@@ -345,7 +346,8 @@ class ContentProductDetail extends Component {
                     </div>
                   </div>
                 </div>
-
+                {/* Sản phẩm đề xuất */}
+                {/* 
                 <div className="recommended_items">
                   <h2 className="title text-center">recommended items</h2>
 
@@ -382,7 +384,7 @@ class ContentProductDetail extends Component {
                                       className="btn btn-default add-to-cart"
                                     >
                                       <i className="fa fa-shopping-cart" />
-                                      Add to cart
+                                      Thêm vào giở hàng
                                     </button>
                                   </div>
                                 </div>
@@ -407,7 +409,7 @@ class ContentProductDetail extends Component {
                       <i className="fa fa-angle-right" />
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

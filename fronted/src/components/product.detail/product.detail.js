@@ -51,7 +51,7 @@ class ProductDetail extends Component {
         />
         <footer id="footer">
           <FooterTop />
-          <FooterMiddle />
+          {/* <FooterMiddle /> */}
           <FooterBottom />
         </footer>
       </div>
