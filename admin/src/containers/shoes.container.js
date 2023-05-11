@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as bookActions from "../actions/book.action";
-import Shoes from "../components/shoes/shoes";
+import Shoes1 from "../components/shoes/shoes1";
 import NavbarContainer from "./navbar.container";
 import Slider from "./slider.container";
 import * as userActions from "../actions/user.action";
@@ -31,7 +31,7 @@ class ShoesContainer extends Component {
       <section id="container" className="">
         <NavbarContainer />
         <Slider />
-        <Shoes
+        <Shoes1
           book={this.props.book}
           totalpage={this.props.totalpage}
           page={this.props.page}

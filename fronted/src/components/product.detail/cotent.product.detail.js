@@ -160,9 +160,9 @@ class ContentProductDetail extends Component {
             X
           </div>
           <div className="aler-title">
-            <h3 className="title">Thông Tin Đơn Hàng</h3>
+            <h3 className="title">Thông tin giỏ hàng</h3>
           </div>
-          <div className="aler-body">Đặt Hàng thành công</div>
+          <div className="aler-body">Thêm giỏ hàng thành công</div>
           <div className="alert-footer">
             <button
               className="roduct-variation"
@@ -301,6 +301,9 @@ class ContentProductDetail extends Component {
                 <div className="col-sm-12 review-product">
                   <div>
                     <h2>Mô Tả</h2>
+                    <div>
+                      <p>{this.props.mproductDetail.describe}</p>
+                    </div>
                   </div>
                 </div>
                 <div className="tab-content">

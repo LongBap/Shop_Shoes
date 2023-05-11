@@ -1371,7 +1371,7 @@ h2.title {
 .product-information h2 {
   color: #363432;
   font-family: "Roboto", sans-serif;
-  font-size: 35px;
+  font-size: 25px;
   margin-top: 0;
 }
 
@@ -1552,8 +1552,8 @@ h2.title {
 }
 .review-product {
   display: flex;
-  justify-content: center;
-  padding: 3.5rem 0;
+  /* justify-content: center; */
+  padding: 3rem;
 }
 #reviews button {
   background: #f15129;

@@ -26,9 +26,6 @@ class ProductDetailContainer extends Component {
       this.props.productActions.getNamePubliserByID(
         nextProps.mproductDetail.id_nsx
       );
-      this.props.productActions.getNameAuthorByID(
-        nextProps.mproductDetail.id_author
-      );
     }
     if (nextProps.page !== this.props.page) {
       this.props.productActions.getCommentByIDBook(this.props.match.params.id);
@@ -39,8 +36,7 @@ class ProductDetailContainer extends Component {
     if (
       this.props.mproductDetail &&
       this.props.nameCategory &&
-      this.props.namePublicsher &&
-      this.props.nameAuthor
+      this.props.namePublicsher
     ) {
       return (
         <div>

@@ -980,7 +980,8 @@
 
 
     #main-content {
-
+        display: block;
+        overflow-x: clip;
         margin-left: 180px;
 
     }
