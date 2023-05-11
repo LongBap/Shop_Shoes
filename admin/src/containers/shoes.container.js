@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as bookActions from "../actions/book.action";
-import Book from "../components/book/book";
+import Shoes from "../components/shoes/shoes";
 import NavbarContainer from "./navbar.container";
 import Slider from "./slider.container";
 import * as userActions from "../actions/user.action";
-class BookContainer extends Component {
+class ShoesContainer extends Component {
   async componentWillMount() {
     this.props.bookActions.getCategory();
     this.props.bookActions.getPublisher();
@@ -31,17 +31,17 @@ class BookContainer extends Component {
       <section id="container" className="">
         <NavbarContainer />
         <Slider />
-        <Book
+        <Shoes
           book={this.props.book}
           totalpage={this.props.totalpage}
           page={this.props.page}
           category={this.props.category}
           publisher={this.props.publisher}
           author={this.props.author}
-          deleteBook={id => this.props.bookActions.deleteBook(id)}
+          deleteBook={(id) => this.props.bookActions.deleteBook(id)}
           backPage={() => this.props.bookActions.backPage()}
           nextPage={() => this.props.bookActions.nextPage()}
-          setPage={page => this.props.bookActions.setPage(page)}
+          setPage={(page) => this.props.bookActions.setPage(page)}
           isadd={this.props.isadd}
           isupdate={this.props.isupdate}
           addBook={(
@@ -51,7 +51,6 @@ class BookContainer extends Component {
             release_date,
             describe,
             id_nsx,
-            id_author,
             file
           ) =>
             this.props.bookActions.addBook(
@@ -61,7 +60,6 @@ class BookContainer extends Component {
               release_date,
               describe,
               id_nsx,
-              id_author,
               file
             )
           }
@@ -93,7 +91,7 @@ class BookContainer extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   book: state.bookReducers.book.data,
   totalpage: state.bookReducers.book.totalpage,
   page: state.bookReducers.book.page,
@@ -102,16 +100,13 @@ const mapStateToProps = state => ({
   author: state.bookReducers.author.data,
   isadd: state.bookReducers.book.isadd,
   isupdate: state.bookReducers.book.isupdate,
-  islogin: state.userReducers.user.islogin
+  islogin: state.userReducers.user.islogin,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     bookActions: bindActionCreators(bookActions, dispatch),
-    userActions: bindActionCreators(userActions, dispatch)
+    userActions: bindActionCreators(userActions, dispatch),
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BookContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoesContainer);

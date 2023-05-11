@@ -33,8 +33,7 @@ exports.addBook = async (req, res) => {
     typeof req.body.price === "undefined" ||
     typeof req.body.release_date === "undefined" ||
     typeof req.body.describe === "undefined" ||
-    typeof req.body.id_nsx === "undefined" ||
-    typeof req.body.id_author === "undefined"
+    typeof req.body.id_nsx === "undefined"
   ) {
     res.status(422).json({ msg: "Invalid data" });
     return;

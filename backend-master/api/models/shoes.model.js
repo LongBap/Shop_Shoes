@@ -33,10 +33,6 @@ const shoes = new Schema({
     type: String,
     required: [true, "can't be blank"],
   },
-  id_author: {
-    type: String,
-    required: [true, "can't be blank"],
-  },
   view_counts: {
     type: Number,
     default: 0,

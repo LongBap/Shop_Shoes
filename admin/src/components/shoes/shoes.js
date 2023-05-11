@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-class Book extends Component {
+class Shoes extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,17 +11,15 @@ class Book extends Component {
       curr: "add",
       category: "Thể Loại",
       publisher: "Nhà Xuất Bản",
-      author: "Tác Giả",
       name: "",
       release_date: null,
       price: "",
       img: "",
       describe: "",
       id_nsx: "",
-      id_author: "",
       id_category: "",
       noti: "",
-      id: null
+      id: null,
     };
   }
   componentWillMount() {
@@ -41,14 +39,14 @@ class Book extends Component {
     }
     if (nextProps.book !== null) {
       this.setState({
-        imagePreviewUrl: nextProps.book.img
+        imagePreviewUrl: nextProps.book.img,
       });
     }
     if (nextProps.isadd === true) {
-      this.reset()
-    } 
-    if(nextProps.isupdate === true) {
-      this.reset()
+      this.reset();
+    }
+    if (nextProps.isupdate === true) {
+      this.reset();
     }
   }
   renderPagination() {
@@ -85,19 +83,18 @@ class Book extends Component {
       );
     }
   }
-  handleChangeImg = img => {
-    if(img === undefined)
-      return
+  handleChangeImg = (img) => {
+    if (img === undefined) return;
     let reader = new FileReader();
     reader.onloadend = () => {
       this.setState({
         file: img,
-        img: reader.result
+        img: reader.result,
       });
     };
     reader.readAsDataURL(img);
   };
-  invalidPrice = t => {
+  invalidPrice = (t) => {
     var str = t.toString();
     let count = 0;
     for (let i = 0; i < str.length; i++) {
@@ -116,85 +113,78 @@ class Book extends Component {
     return !isNaN(Number.parseFloat(str));
   };
   submitAddBook = () => {
-    const {
-      id_category,
-      name,
-      price,
-      release_date,
-      describe,
-      id_nsx,
-      id_author,
-      file
-    } = this.state;
+    const { id_category, name, price, release_date, describe, id_nsx, file } =
+      this.state;
+    console.log(file);
     if (name.length <= 0) {
       this.setState({
-        noti: "Name invalid"
+        noti: "Name invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (release_date === null) {
       this.setState({
-        noti: "Day invalid"
+        noti: "Day invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (!this.invalidPrice(price)) {
       this.setState({
-        noti: "Price invalid"
+        noti: "Price invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (id_category === "") {
       this.setState({
-        noti: "Category invalid"
+        noti: "Category invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
-    if (id_author === "") {
-      this.setState({
-        noti: "Author invalid"
-      });
-      return;
-    } else {
-      this.setState({
-        noti: ""
-      });
-    }
+    // if (id_author === "") {
+    //   this.setState({
+    //     noti: "Author invalid",
+    //   });
+    //   return;
+    // } else {
+    //   this.setState({
+    //     noti: "",
+    //   });
+    // }
 
     if (id_nsx === "") {
       this.setState({
-        noti: "Publisher invalid"
+        noti: "Publisher invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (file === null) {
       this.setState({
-        noti: "File invalid"
+        noti: "File invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     this.props.addBook(
@@ -204,7 +194,6 @@ class Book extends Component {
       release_date,
       describe,
       id_nsx,
-      id_author,
       file
     );
   };
@@ -216,80 +205,68 @@ class Book extends Component {
       release_date,
       describe,
       id_nsx,
-      id_author,
       file,
-      id, 
-      img
+      id,
+      img,
     } = this.state;
     if (name.length <= 0) {
       this.setState({
-        noti: "Name invalid"
+        noti: "Name invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (release_date === null) {
       this.setState({
-        noti: "Day invalid"
+        noti: "Day invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (!this.invalidPrice(price)) {
       this.setState({
-        noti: "Price invalid"
+        noti: "Price invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     if (id_category === "") {
       this.setState({
-        noti: "Category invalid"
+        noti: "Category invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
-    if (id_author === "") {
-      this.setState({
-        noti: "Author invalid"
-      });
-      return;
-    } else {
-      this.setState({
-        noti: ""
-      });
-    }
-
     if (id_nsx === "") {
       this.setState({
-        noti: "Publisher invalid"
+        noti: "Publisher invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
-    if (file === null && img === '' ) {
+    if (file === null && img === "") {
       this.setState({
-        noti: "File invalid"
+        noti: "File invalid",
       });
       return;
     } else {
       this.setState({
-        noti: ""
+        noti: "",
       });
     }
     this.props.updateBook(
@@ -300,7 +277,6 @@ class Book extends Component {
       release_date,
       describe,
       id_nsx,
-      id_author,
       file
     );
   };
@@ -319,7 +295,9 @@ class Book extends Component {
             <button className="btn-custom" disabled type="button">
               Update
             </button>
-            <button className="btn-custom" onClick={() => this.reset()}>Reset</button>
+            <button className="btn-custom" onClick={() => this.reset()}>
+              Reset
+            </button>
           </div>
         </div>
       );
@@ -337,7 +315,9 @@ class Book extends Component {
             >
               Update
             </button>
-            <button className="btn-custom" onClick={() => this.reset()}>Reset</button>
+            <button className="btn-custom" onClick={() => this.reset()}>
+              Reset
+            </button>
           </div>
         </div>
       );
@@ -346,25 +326,23 @@ class Book extends Component {
   reset = () => {
     this.setState({
       noti: "",
-        name: "",
-        file: null,
-        imagePreviewUrl: null,
-        curr: "add",
-        category: "category",
-        publisher: "publisher",
-        author: "author",
-        name: "",
-        release_date: null,
-        price: "",
-        img: "",
-        describe: "",
-        id_nsx: "",
-        id_author: "",
-        id_category: "",
-        noti: "",
-        id: null
-    })
-  }
+      name: "",
+      file: null,
+      imagePreviewUrl: null,
+      curr: "add",
+      category: "category",
+      publisher: "publisher",
+      name: "",
+      release_date: null,
+      price: "",
+      img: "",
+      describe: "",
+      id_nsx: "",
+      id_category: "",
+      noti: "",
+      id: null,
+    });
+  };
   renderMenuCategory = () => {
     if (this.props.category) {
       return this.props.category.map((element, index) => {
@@ -373,7 +351,7 @@ class Book extends Component {
             onClick={() =>
               this.setState({
                 category: element.name,
-                id_category: element._id
+                id_category: element._id,
               })
             }
           >
@@ -419,17 +397,17 @@ class Book extends Component {
       return null;
     }
   };
-  getNameCategoryByID = id => {
+  getNameCategoryByID = (id) => {
     for (let i = 0; i < this.props.category.length; i++) {
       if (id === this.props.category[i]._id) return this.props.category[i].name;
     }
   };
-  getNameAuthorByID = id => {
+  getNameAuthorByID = (id) => {
     for (let i = 0; i < this.props.author.length; i++) {
       if (id === this.props.author[i]._id) return this.props.author[i].name;
     }
   };
-  getNamePublisherByID = id => {
+  getNamePublisherByID = (id) => {
     for (let i = 0; i < this.props.publisher.length; i++) {
       console.log(id + " === " + this.props.publisher[i]._id);
       if (id === this.props.publisher[i]._id)
@@ -450,10 +428,12 @@ class Book extends Component {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <i className="fa fa-table" />Table
+                <i className="fa fa-table" />
+                Table
               </li>
               <li>
-                <i className="fa fa-th-list" />Book Manager
+                <i className="fa fa-th-list" />
+                Shoes Manager
               </li>
             </ol>
           </div>
@@ -485,7 +465,7 @@ class Book extends Component {
                     return (
                       <tr>
                         <td>{element.name}</td>
-                        <td>{element.release_date.slice(0,10)}</td>
+                        <td>{element.release_date.slice(0, 10)}</td>
                         <td>{element.price}</td>
                         <td style={{ width: "40%" }}>{element.describe}</td>
                         <td>
@@ -505,16 +485,12 @@ class Book extends Component {
                                     element.id_category
                                   ),
                                   id_category: element.id_category,
-                                  id_author: element.id_author,
                                   id_nsx: element.id_nsx,
-                                  author: this.getNameAuthorByID(
-                                    element.id_author
-                                  ),
                                   publisher: this.getNamePublisherByID(
                                     element.id_nsx
                                   ),
                                   img: element.img,
-                                  id: element._id
+                                  id: element._id,
                                 })
                               }
                               className="btn btn-success"
@@ -556,9 +532,9 @@ class Book extends Component {
                       </label>
                       <div className="col-lg-10">
                         <input
-                          onChange={e => {
+                          onChange={(e) => {
                             this.setState({
-                              name: e.target.value
+                              name: e.target.value,
                             });
                           }}
                           value={this.state.name}
@@ -578,9 +554,9 @@ class Book extends Component {
                       <div className="col-lg-10">
                         <input
                           value={this.state.release_date}
-                          onChange={e =>
+                          onChange={(e) =>
                             this.setState({
-                              release_date: e.target.value
+                              release_date: e.target.value,
                             })
                           }
                           className="form-control "
@@ -598,9 +574,9 @@ class Book extends Component {
                       <div className="col-lg-10">
                         <input
                           value={this.state.price}
-                          onChange={e =>
+                          onChange={(e) =>
                             this.setState({
-                              price: e.target.value
+                              price: e.target.value,
                             })
                           }
                           className="form-control "
@@ -617,9 +593,9 @@ class Book extends Component {
                       <div className="col-lg-10">
                         <input
                           value={this.state.describe}
-                          onChange={e =>
+                          onChange={(e) =>
                             this.setState({
-                              describe: e.target.value
+                              describe: e.target.value,
                             })
                           }
                           className="form-control"
@@ -633,7 +609,7 @@ class Book extends Component {
                     </div>
                     <div className="form-group ">
                       <label for="comment " className="control-label col-lg-2">
-                        Thể Loại
+                        Loại giày
                       </label>
                       <div className="btn-group col-lg-10">
                         <button
@@ -651,25 +627,7 @@ class Book extends Component {
                     </div>
                     <div className="form-group ">
                       <label for="comment" className="control-label col-lg-2">
-                        Tác Giả
-                      </label>
-                      <div className="btn-group col-lg-10">
-                        <button
-                          style={{ width: "200px" }}
-                          type="button"
-                          className="btn btn-default dropdown-toggle"
-                          data-toggle="dropdown"
-                        >
-                          {this.state.author} <span className="caret" />
-                        </button>
-                        <ul className="dropdown-menu" role="menu">
-                          {this.renderMenuAuthor()}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="form-group ">
-                      <label for="comment" className="control-label col-lg-2">
-                        Nhà Xuất Bản
+                        Xuất xứ
                       </label>
                       <div className="btn-group col-lg-10">
                         <button
@@ -696,7 +654,7 @@ class Book extends Component {
                           id="ccomment"
                           name="comment"
                           required
-                          onChange={e =>
+                          onChange={(e) =>
                             this.handleChangeImg(e.target.files[0])
                           }
                         />
@@ -729,4 +687,4 @@ class Book extends Component {
     );
   }
 }
-export default Book;
+export default Shoes;

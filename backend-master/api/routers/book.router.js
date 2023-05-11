@@ -3,7 +3,7 @@ const shoes_controller = require("../controllers/shoes.controller");
 module.exports = (app) => {
   app.route("/book/totalpage").get(shoes_controller.getTotalPage);
 
-  app.route("/book/allbook").post(shoes_controller.getAllBook);
+  app.route("/book/allshoes").post(shoes_controller.getAllBook);
 
   app.route("/book/publisher").post(shoes_controller.getBookByPublisher);
 
