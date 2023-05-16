@@ -3,7 +3,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      sum: 1000
+      sum: 1000,
     };
   }
   tinh(count) {
@@ -25,13 +25,14 @@ class Home extends Component {
                     <a href="index.html">Home</a>
                   </li>
                   <li>
-                    <i className="fa fa-laptop" />Dashboard
+                    <i className="fa fa-laptop" />
+                    Dashboard
                   </li>
                 </ol>
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
               <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <div className="info-box blue-bg">
                   <i className="fa fa-cloud-download" />
@@ -61,9 +62,7 @@ class Home extends Component {
                   <div className="title">Stock</div>
                 </div>
               </div>
-            </div>
-
-            
+            </div> */}
 
             <div className="row">
               <div className="col-lg-9 col-md-12">
@@ -101,52 +100,41 @@ class Home extends Component {
                       </thead>
                       <tbody>
                         {this.props.top_product.map((element, index) => {
-                          return(
+                          return (
                             <tr>
-                            <td>
-                              <div className='home-image'>
-                                <img
-                                  src={element.img}
-                                  
-                                />
-                              </div>
-                              
-                            </td>
-                            <td>{element.name}</td>
-                            <td>{element.price}</td>
-                            <td>{element.count}</td>
-                            <td>
-                              <div className="progress thin">
-                                <div
-                                  className="progress-bar progress-bar-danger"
-                                  role="progressbar"
-                                  aria-valuenow="80"
-                                  aria-valuemin="0"
-                                  aria-valuemax="100"
-                                  style={{ width: this.tinh(element.count) }}
-                                />
-                              </div>
-                              <span className="sr-only">73%</span>
-                            </td>
-                          </tr>
-                          ) 
+                              <td>
+                                <div className="home-image">
+                                  <img src={element.img} />
+                                </div>
+                              </td>
+                              <td>{element.name}</td>
+                              <td>{element.price}</td>
+                              <td>{element.count}</td>
+                              <td>
+                                <div className="progress thin">
+                                  <div
+                                    className="progress-bar progress-bar-danger"
+                                    role="progressbar"
+                                    aria-valuenow="80"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    style={{ width: this.tinh(element.count) }}
+                                  />
+                                </div>
+                                <span className="sr-only">73%</span>
+                              </td>
+                            </tr>
+                          );
                         })}
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
-
-              
-            
             </div>
 
-         
             <br />
-   
-
           </section>
-          
         </section>
       </div>
     );
